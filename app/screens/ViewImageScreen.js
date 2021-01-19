@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 
