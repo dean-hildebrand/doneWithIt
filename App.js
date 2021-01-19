@@ -5,6 +5,8 @@ import Card from "./app/components/Card";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
+import AppText from "./app/components/AppText";
+
 // import colors from "./config/colors";
 
 export default function App() {
