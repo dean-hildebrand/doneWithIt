@@ -7,21 +7,5 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 // import colors from "./config/colors";
 
 export default function App() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>
-        <AppButton
-          title="Login"
-          onPress={() => console.log("pressing button")}
-        />
-        ;
-      </Text>
-    </View>
-  );
+  return <WelcomeScreen />;
 }
