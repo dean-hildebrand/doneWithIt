@@ -9,13 +9,11 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import MyAccountScreen from "./app/screens/MyAccountScreen";
 import Icon from "./app/components/Icon";
 import Screen from "./app/components/Screen";
+import ListItem from "./app/components/ListItem";
+import AccountScreen from "./app/screens/AccountScreen";
 
 // import colors from "./config/colors";
 
 export default function App() {
-  return (
-    <Screen>
-      <Icon name="email" size={50} backgroundColor="red" iconColor="white" />
-    </Screen>
-  );
+  return <AccountScreen />;
 }
