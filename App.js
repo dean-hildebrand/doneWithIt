@@ -9,21 +9,5 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 // import colors from "./config/colors";
 
 export default function App() {
-  return <ListingDetailsScreen />;
-}
-
-{
-  /* <View
-style={{
-  backgroundColor: "#DFDBDB",
-  padding: 20,
-  paddingTop: 100,
-}}
->
-<Card
-  title="Red Jacket for sale"
-  subTitle="$100"
-  image={require("./app/assets/jacket.jpg")}
-/>
-</View> */
+  return <ViewImageScreen />;
 }
