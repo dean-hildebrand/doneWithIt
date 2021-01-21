@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 import ListItem from "../components/ListItem";
+//installed constants to use their statusbar height property
+import Constants from "expo-constants";
 
 const messages = [
   {
@@ -45,7 +41,7 @@ function MessagesScreen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Constants.statusBarHeight,
   },
 });
 
