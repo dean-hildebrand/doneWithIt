@@ -13,14 +13,18 @@ import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import AppTextInput from "./app/components/AppTextInput";
+import { Switch } from "react-native-gesture-handler";
+import AppPicker from "./app/components/AppPicker";
 
 // import colors from "./config/colors";
 
 export default function App() {
-  const [firstName, setFirstName] = useState("");
+  const [isNew, setIsNew] = useState(false);
+
   return (
     <Screen>
-      <AppTextInput placeholder="Username" icon="email" />
+      <AppPicker icon="apps" placeholder="Category" />
+      <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
 }
