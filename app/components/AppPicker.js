@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 
-function AppPicker({ icon, items, placeholder }) {
+function AppPicker({ icon, items, selectedItem, onSelectedItem, placeholder }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -26,7 +26,9 @@ function AppPicker({ icon, items, placeholder }) {
               style={styles.icon}
             />
           )}
-          <Text style={styles.text}>{placeholder}</Text>
+          <Text style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -43,7 +45,10 @@ function AppPicker({ icon, items, placeholder }) {
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
-                onPress={() => console.log(item)}
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectedItem(item);
+                }}
               />
             )}
           />
