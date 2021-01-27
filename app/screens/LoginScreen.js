@@ -8,6 +8,7 @@ import AppButton from "../components/AppButton";
 import AppTextInput from "../components/AppTextInput";
 import ErrorMessage from "../components/ErrorMessage";
 import Screen from "../components/Screen";
+import AppFormField from "../components/AppFormField";
 
 //sets form validation schema from "yup"
 //
@@ -26,31 +27,29 @@ function LoginScreen(props) {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors }) => (
+        {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <>
-            <AppTextInput
+            <AppFormField
+              name="email"
               autoCapitalize="none"
               autoCorrect={false}
               icon="email"
               keyboardType="email-address"
-              //handleChange('email') refers to initial values in Formik component
-              onChangeText={handleChange("email")}
               placeholder="Email"
               //only for IOS, allows keychain access
               textContentType="emailAddress"
             />
-            <ErrorMessage error={errors.email} />
-            <AppTextInput
+
+            <AppFormField
+              name="password"
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
               placeholder="Password"
-              onChangeText={handleChange("password")}
               secureTextEntry={true}
               //only for IOS, allows keychain access
               textContentType="password"
             />
-            <ErrorMessage error={errors.password} />
             <AppButton title="Login" onPress={() => handleSubmit()} />
           </>
         )}
