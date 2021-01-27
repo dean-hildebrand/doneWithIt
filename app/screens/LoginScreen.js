@@ -1,10 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, Text } from "react-native";
-import AppButton from "../components/AppButton";
-import AppTextInput from "../components/AppTextInput";
+import { Image, StyleSheet } from "react-native";
+
 import { Formik } from "formik";
 import * as Yup from "yup";
 
+import AppButton from "../components/AppButton";
+import AppTextInput from "../components/AppTextInput";
+import ErrorMessage from "../components/ErrorMessage";
 import Screen from "../components/Screen";
 
 //sets form validation schema from "yup"
@@ -37,7 +39,7 @@ function LoginScreen(props) {
               //only for IOS, allows keychain access
               textContentType="emailAddress"
             />
-            <Text style={{ color: "red" }}>{errors.email}</Text>
+            <ErrorMessage error={errors.email} />
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
@@ -48,7 +50,7 @@ function LoginScreen(props) {
               //only for IOS, allows keychain access
               textContentType="password"
             />
-            <Text style={{ color: "red" }}>{errors.password}</Text>
+            <ErrorMessage error={errors.password} />
             <AppButton title="Login" onPress={() => handleSubmit()} />
           </>
         )}
