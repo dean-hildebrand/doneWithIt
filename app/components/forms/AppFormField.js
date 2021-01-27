@@ -2,8 +2,8 @@ import React from "react";
 //uses context api to avoid prop drilling
 import { useFormikContext } from "formik";
 
-import AppTextInput from "./AppTextInput";
-import ErrorMessage from "./ErrorMessage";
+import AppTextInput from "../AppTextInput";
+import ErrorMessage from "../ErrorMessage";
 
 function AppFormField({ name, ...otherProps }) {
   const { setFieldTouched, errors, handleChange, touched } = useFormikContext();

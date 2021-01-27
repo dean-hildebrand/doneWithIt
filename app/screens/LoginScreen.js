@@ -1,14 +1,10 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
 
-import { Formik } from "formik";
 import * as Yup from "yup";
 
-import AppButton from "../components/AppButton";
-import AppTextInput from "../components/AppTextInput";
-import ErrorMessage from "../components/ErrorMessage";
 import Screen from "../components/Screen";
-import AppFormField from "../components/AppFormField";
+import { AppFormField, SubmitButton, AppForm } from "../components/forms";
 
 //sets form validation schema from "yup"
 //
@@ -22,38 +18,34 @@ function LoginScreen(props) {
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
 
-      <Formik
+      <AppForm
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
-          <>
-            <AppFormField
-              name="email"
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="email"
-              keyboardType="email-address"
-              placeholder="Email"
-              //only for IOS, allows keychain access
-              textContentType="emailAddress"
-            />
+        <AppFormField
+          name="email"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="email"
+          keyboardType="email-address"
+          placeholder="Email"
+          //only for IOS, allows keychain access
+          textContentType="emailAddress"
+        />
 
-            <AppFormField
-              name="password"
-              autoCapitalize="none"
-              autoCorrect={false}
-              icon="lock"
-              placeholder="Password"
-              secureTextEntry={true}
-              //only for IOS, allows keychain access
-              textContentType="password"
-            />
-            <AppButton title="Login" onPress={() => handleSubmit()} />
-          </>
-        )}
-      </Formik>
+        <AppFormField
+          name="password"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="lock"
+          placeholder="Password"
+          secureTextEntry={true}
+          //only for IOS, allows keychain access
+          textContentType="password"
+        />
+        <SubmitButton title="login" />
+      </AppForm>
     </Screen>
   );
 }
