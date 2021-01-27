@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, Text } from "react-native";
 import AppButton from "../components/AppButton";
 import AppTextInput from "../components/AppTextInput";
 import { Formik } from "formik";
@@ -22,8 +22,9 @@ function LoginScreen(props) {
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit }) => (
+        {({ handleChange, handleSubmit, errors }) => (
           <>
             <AppTextInput
               autoCapitalize="none"
@@ -36,6 +37,7 @@ function LoginScreen(props) {
               //only for IOS, allows keychain access
               textContentType="emailAddress"
             />
+            <Text style={{ color: "red" }}>{errors.email}</Text>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
@@ -46,6 +48,7 @@ function LoginScreen(props) {
               //only for IOS, allows keychain access
               textContentType="password"
             />
+            <Text style={{ color: "red" }}>{errors.password}</Text>
             <AppButton title="Login" onPress={() => handleSubmit()} />
           </>
         )}
