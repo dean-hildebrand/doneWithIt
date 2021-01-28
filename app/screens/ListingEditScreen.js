@@ -4,7 +4,12 @@ import * as Yup from "yup";
 // import AppFormPicker from "../components/forms/AppFormPicker";
 
 import Screen from "../components/Screen";
-import { AppForm as Form } from "../components/forms/index";
+import {
+  AppForm as Form,
+  AppFormField as FormField,
+  AppFormPicker as Picker,
+  SubmitButton,
+} from "../components/forms/index";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().label("Title"),
@@ -13,10 +18,42 @@ const validationSchema = Yup.object().shape({
   description: Yup.string().label("Description"),
 });
 
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Camera", value: 3 },
+];
+
 export default function ListingEditScreen() {
   return (
     <Screen>
-      <Form />
+      <Form
+        initialValues={{
+          title: "",
+          price: "",
+          description: "",
+          category: null,
+        }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
+      >
+        <FormField maxlength={150} name="title" placeholder="Title" />
+        <FormField
+          keyboardType="numeric"
+          maxlength={8}
+          name="price"
+          placeholder="Price"
+        />
+        <Picker items={categories} name="category" placeholder="Category" />
+        <FormField
+          maxlength={255}
+          name="description"
+          placeholder="Description"
+          multiline
+          numberOfLines={3}
+        />
+        <SubmitButton title="Post" />
+      </Form>
     </Screen>
   );
 }

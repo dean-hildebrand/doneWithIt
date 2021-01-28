@@ -5,17 +5,17 @@ import AppPicker from "../AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
 function AppFormPicker({ items, name, placeholder }) {
-  const {} = useFormikContext();
+  const { errors, setFieldValue, touched, values } = useFormikContext();
 
   return (
     <>
-      {/* <AppPicker
+      <AppPicker
         items={items}
-        onSelectItem={(item) => console.log(name, item)}
+        onSelectedItem={(item) => setFieldValue(name, item)}
         placeholder={placeholder}
         selectedItem={values[name]}
       />
-      <ErrorMessage error={errors[name]} visible={touched[name]} /> */}
+      <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
 }
