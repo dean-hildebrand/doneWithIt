@@ -7,7 +7,6 @@ import Screen from "../components/Screen";
 import { AppFormField, SubmitButton, AppForm } from "../components/forms";
 
 //sets form validation schema from "yup"
-//
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),

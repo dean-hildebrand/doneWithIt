@@ -16,9 +16,10 @@ import AppTextInput from "./app/components/AppTextInput";
 import { Switch } from "react-native";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 // import colors from "./config/colors";
 
 export default function App() {
-  return <LoginScreen />;
+  return <RegisterScreen />;
 }
