@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, View, StyleSheet, Text, SafeAreaView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/lists/ListItem";
 
 function MyAccountScreen(props) {
   return (

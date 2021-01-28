@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-// import AppFormPicker from "../components/forms/AppFormPicker";
 
 import Screen from "../components/Screen";
 import {
@@ -12,9 +11,9 @@ import {
 } from "../components/forms/index";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required().label("Title"),
+  title: Yup.string().required().min(1).label("Title"),
   price: Yup.string().required().min(1).max(10000).label("Price"),
-  category: Yup.string().required().nullable().nullable().label("Categor"),
+  category: Yup.object().required().nullable().nullable().label("Category"),
   description: Yup.string().label("Description"),
 });
 
@@ -26,7 +25,7 @@ const categories = [
 
 export default function ListingEditScreen() {
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <Form
         initialValues={{
           title: "",
@@ -58,4 +57,8 @@ export default function ListingEditScreen() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
