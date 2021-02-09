@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from 'expo-permissions'
+
 import { Text, TextInput, View } from "react-native";
 import AppButton from "./app/components/AppButton";
 import Card from "./app/components/Card";
@@ -21,5 +24,15 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 // import colors from "./config/colors";
 
 export default function App() {
-  return <ListingEditScreen />;
+  const requestPermission = async () => {
+    const result = await ImagePicker.requestCameraPermissionsAsync();
+    if (!result.granted)
+      alert("You need to enable permisson to access your photos");
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  return <Screen></Screen>;
 }
