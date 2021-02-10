@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
+// import * as Permissions from "expo-permissions";
 
 import { Button, Image, Text, TextInput, View } from "react-native";
 import AppButton from "./app/components/AppButton";
@@ -20,35 +20,38 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
 
 // import colors from "./config/colors";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState("");
+  // const [imageUri, setImageUri] = useState();
 
-  const requestPermission = async () => {
-    const result = await ImagePicker.requestCameraPermissionsAsync();
-    if (!result.granted)
-      alert("You need to enable permisson to access your photos");
-  };
+  // const requestPermission = async () => {
+  //   const result = await ImagePicker.requestCameraPermissionsAsync();
+  //   if (!result.granted)
+  //     alert("You need to enable permisson to access your photos");
+  // };
 
-  useEffect(() => {
-    requestPermission();
-  }, []);
+  // //cannot use async await in useEffect, created separate function and called in useEffect
+  // useEffect(() => {
+  //   requestPermission();
+  // }, []);
 
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) setImageUri(result.uri);
-    } catch (error) {
-      console.log("Error reading an image", error);
-    }
-  };
+  // const selectImage = async () => {
+  //   try {
+  //     const result = await ImagePicker.launchImageLibraryAsync();
+  //     if (!result.cancelled) setImageUri(result.uri);
+  //   } catch (error) {
+  //     console.log("Error reading an image", error);
+  //   }
+  // };
 
   return (
-    <Screen>
-      <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-    </Screen>
+    <ImageInput />
+    // <Screen>
+    //   <Button title="Select Image" onPress={selectImage} />
+    //   <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+    // </Screen>
   );
 }
