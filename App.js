@@ -25,33 +25,33 @@ import ImageInput from "./app/components/ImageInput";
 // import colors from "./config/colors";
 
 export default function App() {
-  // const [imageUri, setImageUri] = useState();
+  const [imageUri, setImageUri] = useState();
 
-  // const requestPermission = async () => {
-  //   const result = await ImagePicker.requestCameraPermissionsAsync();
-  //   if (!result.granted)
-  //     alert("You need to enable permisson to access your photos");
-  // };
+  const requestPermission = async () => {
+    const result = await ImagePicker.requestCameraPermissionsAsync();
+    if (!result.granted)
+      alert("You need to enable permisson to access your photos");
+  };
 
-  // //cannot use async await in useEffect, created separate function and called in useEffect
-  // useEffect(() => {
-  //   requestPermission();
-  // }, []);
+  //cannot use async await in useEffect, created separate function and called in useEffect
+  useEffect(() => {
+    requestPermission();
+  }, []);
 
-  // const selectImage = async () => {
-  //   try {
-  //     const result = await ImagePicker.launchImageLibraryAsync();
-  //     if (!result.cancelled) setImageUri(result.uri);
-  //   } catch (error) {
-  //     console.log("Error reading an image", error);
-  //   }
-  // };
+  const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.cancelled) setImageUri(result.uri);
+    } catch (error) {
+      console.log("Error reading an image", error);
+    }
+  };
 
   return (
-    <ImageInput />
-    // <Screen>
-    //   <Button title="Select Image" onPress={selectImage} />
-    //   <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-    // </Screen>
+    <Screen>
+      <Button title="Select Image" onPress={selectImage} />
+      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      <ImageInput />
+    </Screen>
   );
 }
