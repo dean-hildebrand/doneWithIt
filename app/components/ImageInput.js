@@ -5,7 +5,6 @@ import {
   TouchableWithoutFeedback,
   Alert,
   Image,
-  ImagePickerIOS,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
