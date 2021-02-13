@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
   Alert,
   Image,
+  ImagePickerIOS,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import colors from "../config/colors";
 
 function ImageInput({ imageUri, onChangeImage }) {
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted)
+      alert("You need to enable permissions to access this feature");
+  };
+
   const handlePress = () => {
     //if no image, show image library
     if (!imageUri) selectImage();
