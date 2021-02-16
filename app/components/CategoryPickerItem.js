@@ -4,10 +4,16 @@ import AppText from "./AppText";
 import Icon from "./Icon";
 
 export default function CategoryPickerItem({ item, onPress }) {
+  console.log(item);
   return (
     <View style={styles.container}>
-      <Icon backgroundColor={item.backgroundColor} name={item.icon} size={80} />
-      <AppText style={styles.label}>{item.label}</AppText>
+      <Icon
+        onPress={onPress}
+        backgroundColor={item.backgroundColor}
+        name={item.icon}
+        size={80}
+      />
+      <Text style={styles.label}>{item.label}</Text>
     </View>
   );
 }
@@ -20,7 +26,7 @@ const styles = StyleSheet.create({
     width: "33%",
   },
   label: {
-    marginTop: 50,
+    marginTop: 5,
     textAlign: "center",
   },
 });

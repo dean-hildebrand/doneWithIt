@@ -22,6 +22,7 @@ import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
+import CategoryPickerItem from "./app/components/CategoryPickerItem";
 
 // import colors from "./config/colors";
 

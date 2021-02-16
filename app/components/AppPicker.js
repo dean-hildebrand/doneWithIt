@@ -1,28 +1,31 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, Modal, Button } from "react-native";
+import {
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  StyleSheet,
+  Modal,
+  Button,
+  FlatList,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import PickerItem from "./PickerItem";
 
+import PickerItem from "./PickerItem";
 import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import Screen from "./Screen";
-import {
-  FlatList,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
 
 function AppPicker({
   icon,
   items,
   selectedItem,
-  onSelectedItem,
+  onSelectItem,
   numberOfColumns = 1,
   placeholder,
   width = "100%",
   PickerItemComponent = PickerItem,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -63,7 +66,7 @@ function AppPicker({
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
-                  onSelectedItem(item);
+                  onSelectItem(item);
                 }}
               />
             )}
