@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import {
-  Text,
   View,
-  TouchableWithoutFeedback,
   StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
   Modal,
   Button,
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import PickerItem from "./PickerItem";
-import colors from "../config/colors";
 import defaultStyles from "../config/styles";
+import PickerItem from "./PickerItem";
 import Screen from "./Screen";
 
 function AppPicker({
   icon,
   items,
-  selectedItem,
-  onSelectItem,
   numberOfColumns = 1,
-  placeholder,
-  width = "100%",
+  onSelectItem,
   PickerItemComponent = PickerItem,
+  placeholder,
+  selectedItem,
+  width = "100%",
 }) {
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -38,8 +38,6 @@ function AppPicker({
               style={styles.icon}
             />
           )}
-
-          {/* conditional for placeholder text styles */}
           {selectedItem ? (
             <Text style={styles.text}>{selectedItem.label}</Text>
           ) : (
@@ -79,7 +77,7 @@ function AppPicker({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
     padding: 15,
@@ -88,11 +86,11 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-  text: {
-    flex: 1,
-  },
   placeholder: {
     color: defaultStyles.colors.medium,
+    flex: 1,
+  },
+  text: {
     flex: 1,
   },
 });
