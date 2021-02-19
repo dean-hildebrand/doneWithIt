@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Image, Text, TextInput, View, Switch } from "react-native";
-
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import { NavigationContainer } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 // import * as Permissions from "expo-permissions";
 
@@ -23,45 +24,17 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
 import CategoryPickerItem from "./app/components/CategoryPickerItem";
-import AuthNavigator from "./app/navigation/AuthNavigator";
-import { NavigationContainer } from "@react-navigation/native";
+import navigationTheme from "./app/navigation/navigationTheme";
+
+import AppNavigator from "./app/navigation/AppNavigator";
 
 // import colors from "./config/colors";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
+    <NavigationContainer theme={navigationTheme}>
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 }
-
-// const Tweets = ({ navigation }) => (
-//   <Screen>
-//     <Text>Tweets</Text>
-//     <Button
-//       title="View Tweet"
-//       onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
-//     />
-//   </Screen>
-// );
-// const TweetDetails = ({ route }) => (
-//   <Screen>
-//     <Text>Tweet Details</Text>
-//     <Text>{route.params.id}</Text>
-//   </Screen>
-// );
-
-// const Account = () => (
-//   <Screen>
-//     <Text>Account</Text>
-//   </Screen>
-// );
-
-// const Tab = createBottomTabNavigator();
-// const TabNavigator = () => (
-//   <Tab.Navigator>
-//     <Tab.Screen name="Feed" component={StackNavigator} />
-//     <Tab.Screen name="Account" component={Account} />
-//   </Tab.Navigator>
-// );
