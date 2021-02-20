@@ -27,6 +27,7 @@ import CategoryPickerItem from "./app/components/CategoryPickerItem";
 import navigationTheme from "./app/navigation/navigationTheme";
 
 import AppNavigator from "./app/navigation/AppNavigator";
+import AccountNavigator from "./app/navigation/AccountNavigator";
 
 // import colors from "./config/colors";
 
