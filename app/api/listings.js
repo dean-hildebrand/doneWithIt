@@ -8,9 +8,9 @@ const addListing = (listing) => {
   const data = new FormData();
 
   data.append("title", listing.title);
-  data.append("price", listing.title);
+  data.append("price", listing.price);
+  data.append("categoryId", listing.category.value);
   data.append("description", listing.description);
-  data.append("category", listing.category.value);
 
   listing.images.forEach((image, index) =>
     data.append("images", {
@@ -23,7 +23,7 @@ const addListing = (listing) => {
   if (listing.location) {
     data.append("location", JSON.stringify(listing.location));
   }
-  return client.post(endpoint);
+  return client.post(endpoint, data);
 };
 
 export default {
