@@ -92,15 +92,20 @@ export default function ListingEditScreen() {
       { ...listing, location },
       (progress) => setProgress(progress)
     );
-    setuploadVisible(false);
 
-    if (!result.ok) return alert("Could not save the listing");
-    alert("Success");
+    if (!result.ok) {
+      setuploadVisible(false);
+      return alert("Could not save the listing");
+    }
   };
 
   return (
     <Screen style={styles.container}>
-      <UploadScreen progress={progress} visible={uploadVisible} />
+      <UploadScreen
+        onDone={() => setuploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <Form
         initialValues={{
           title: "",
