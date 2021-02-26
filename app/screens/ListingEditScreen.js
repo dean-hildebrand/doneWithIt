@@ -85,7 +85,7 @@ export default function ListingEditScreen() {
   const [uploadVisible, setuploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const handleSubmit = async (listing) => {
+  const handleSubmit = async (listing, { resetForm }) => {
     setProgress(0);
     setuploadVisible(true);
     const result = await listingsApi.addListing(
@@ -97,6 +97,7 @@ export default function ListingEditScreen() {
       setuploadVisible(false);
       return alert("Could not save the listing");
     }
+    resetForm();
   };
 
   return (
